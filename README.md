@@ -1,6 +1,8 @@
 # project-lawnmover
 Group Members:
 
-Jose Delgadillo 
+Jose Delgadillo : asvpjose@csu.fullerton.edu
 
-Vanessa Ayala
+Vanessa Ayala: vanessaa891@csu.fullerton.edu
+
+Purpose of project: the purpose of the project is to sort through

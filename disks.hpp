@@ -112,7 +112,18 @@ public:
   // Return true when this disk_state is fully sorted, with all light disks on
   // the left (low indices) and all dark disks on the right (high indices).
   bool is_sorted() const {
-      
+        // loop through total_count
+        for(size_t i = 0; i < total_count(); i++){
+          if (i < total_count() / 2 ){
+            if(_colors[i] == DISK_DARK){
+              return false;
+            }
+          } else{
+            if(_colors[i] == DISK_LIGHT){
+              return false;
+            }
+          }
+        }
       return true;
   }
 };
@@ -144,18 +155,41 @@ public:
 
 // Algorithm that sorts disks using the alternate algorithm.
 sorted_disks sort_alternate(const disk_state& before) {
-	int numOfSwap = 0;                                                                      //record # of step swap
- 
+	int numOfSwap = 0;  
+  disk_state state = before;            //record # of step swap
+        for (size_t j = 0; j < before.light_count(); j++){
+          for (size_t i = j; i < before.total_count() - 1; i++){
+            if (before.get(i) > before.get(i + 1)) {
+                  const_cast <disk_state&> (before).swap(i);
+                  numOfSwap++;
+            }
           }
+        }
 
   return sorted_disks(disk_state(state), numOfSwap);
-}
+
+  }
 
 
 // Algorithm that sorts disks using the lawnmower algorithm.
 sorted_disks sort_lawnmower(const disk_state& before) {
-  	
+  int numOfSwap = 0;
+  disk_state state = before;
+      for (size_t j = 0; j < before.light_count(); j++){
+        for (size_t i = j; i < before.total_count()- 1; i++){
+            if(before.get(i) > before.get(i + 1)){
+              const_cast <disk_state&> (before).swap(i);
+              numOfSwap++;
+            }
+        }
+        for (size_t i = before.total_count() - 1; i > 0; i--){
+          if (before.get(i) < before.get(i - 1)){
+            const_cast <disk_state&> (before).swap(i - 1);
+            numOfSwap++;
+          }
+        }
+      }
+  	return sorted_disks(disk_state(state), numOfSwap);
 	  }
 
-  return sorted_disks(disk_state(state), numOfSwap);
-}
+  
