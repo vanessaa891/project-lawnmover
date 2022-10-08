@@ -9,4 +9,9 @@ Purpose of project: the purpose of the project is to sort through
 
 pseudocode: 
 
+alternate function: 
+for (
+
+
+
 
