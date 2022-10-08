@@ -4,7 +4,7 @@
 // Definitions for two algorithms that each solve the alternating disks
 // problem.
 //
-// As provided, this header has four functions marked with TODO comments.
+// As provided, thi`s header has four functions marked with TODO comments.
 // You need to write in your own implementation of these functions.
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -155,8 +155,7 @@ public:
 
 // Algorithm that sorts disks using the alternate algorithm.
 sorted_disks sort_alternate(const disk_state& before) {
-	int numOfSwap = 0;  
-  disk_state state = before;            //record # of step swap
+	int numOfSwap = 0;            //record # of step swap
         for (size_t j = 0; j < before.light_count(); j++){
           for (size_t i = j; i < before.total_count() - 1; i++){
             if (before.get(i) > before.get(i + 1)) {
@@ -166,7 +165,7 @@ sorted_disks sort_alternate(const disk_state& before) {
           }
         }
 
-  return sorted_disks(disk_state(state), numOfSwap);
+  return sorted_disks(disk_state(before), numOfSwap);
 
   }
 
@@ -174,7 +173,6 @@ sorted_disks sort_alternate(const disk_state& before) {
 // Algorithm that sorts disks using the lawnmower algorithm.
 sorted_disks sort_lawnmower(const disk_state& before) {
   int numOfSwap = 0;
-  disk_state state = before;
       for (size_t j = 0; j < before.light_count(); j++){
         for (size_t i = j; i < before.total_count()- 1; i++){
             if(before.get(i) > before.get(i + 1)){
@@ -189,7 +187,7 @@ sorted_disks sort_lawnmower(const disk_state& before) {
           }
         }
       }
-  	return sorted_disks(disk_state(state), numOfSwap);
+  	return sorted_disks(disk_state(before), numOfSwap);
 	  }
 
   
