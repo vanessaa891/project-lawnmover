@@ -1,1 +1,5 @@
-
+.vscode
+disks_test 
+*o
+*.out
+build 
